@@ -9,7 +9,7 @@ WORKDIR /app
 COPY package.json ./
 
 # 安装项目依赖
-RUN apk add --update python3 py3-pip && npm install
+RUN apk add --update make python3 py3-pip && npm install
 
 # 复制整个项目到工作目录
 COPY . .
