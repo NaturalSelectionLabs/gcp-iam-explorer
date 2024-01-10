@@ -1,0 +1,28 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+jobs:
+  build:
+    uses: NaturalSelectionLabs/Daedalus/.github/workflows/docker-tpl.yaml@main
+    with:
+      images: rss3/gcp-iam-explorer
+      context: ./packages/web
+      dockerfile: ./Dockerfile
+    secrets: inherit
+  # deploy:
+  #   uses: NaturalSelectionLabs/Daedalus/.github/workflows/deploy-v3-tpl.yaml@main
+  #   needs:
+  #     - build
+  #   with:
+  #     images: rss3/gcp-iam-explorer
+  #     tag: sha-${{ github.sha }}
+  #     cluster: prod
+  #     namespace: guardian
+  #     releaseName: gcp-iam-explorer
+  #     revision: main
+  #     dir: deploy/prod
+  #   secrets: inherit
