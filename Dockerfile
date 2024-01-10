@@ -4,11 +4,12 @@ FROM node:10-alpine
 # 设置工作目录
 WORKDIR /app
 
+
 # 复制 package.json 和 yarn.lock 到工作目录
 COPY package.json ./
 
 # 安装项目依赖
-RUN npm install
+RUN apk add --update python3 py3-pip && npm install
 
 # 复制整个项目到工作目录
 COPY . .
