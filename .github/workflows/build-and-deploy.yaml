@@ -10,7 +10,7 @@ jobs:
     uses: NaturalSelectionLabs/Daedalus/.github/workflows/docker-tpl.yaml@main
     with:
       images: rss3/gcp-iam-explorer
-      context: ./packages/web
+      context: ./
       dockerfile: ./Dockerfile
     secrets: inherit
   # deploy:
